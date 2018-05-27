@@ -1,0 +1,34 @@
+---
+layout: default
+title: "Art"
+teaser: "Check out all my art posts. Click on a headline to read the teaser."
+breadcrumb: true
+permalink: "art/"
+---
+<div id="blog-index" class="row">
+	<div class="small-12 columns t30">
+		<h1>{{ page.title }}</h1>
+		{% if page.teaser %}<p class="teaser">{{ page.teaser }}</p>{% endif %}
+
+		<dl class="accordion" data-accordion>
+			{% assign counter = 1 %}
+
+			{% assign show_posts = site.posts | where_exp: "item", "item.categories contains 'art'" %}
+			{% for post in show_posts %}
+
+				<dd class="accordion-navigation">
+				<a href="#panel{{ counter }}"><span class="iconfont"></span> {% if post.subheadline %}{{ post.subheadline }} › {% endif %}<strong>{{ post.title }}</strong></a>
+					<div id="panel{{ counter }}" class="content">
+						{% if post.meta_description %}{{ post.meta_description | strip_html | escape }}{% elsif post.teaser %}{{ post.teaser | strip_html | escape }}<br/>{% endif %}
+						<a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" title="Read {{ post.title | escape_once }}"><strong>{{ site.data.language.read_more }}</strong></a><br><br>
+					</div>
+				</dd>
+				{% assign counter=counter | plus:1 %}
+			{% endfor %}
+		</dl>
+
+	</div><!-- /.small-12.columns -->
+</div><!-- /.row -->
+
+<!-- vim: ts=2
+-->

@@ -1,5 +1,13 @@
-- title: Start
+- title: Home
   url: "/"
+  side: left
+
+- title: Software
+  url: "/software/"
+  side: left
+
+- title: Art
+  url: "/art/"
   side: left
 
 - title: Getting Started
