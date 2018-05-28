@@ -47,16 +47,19 @@
   {% if static_file.path contains include.folder %}
   	{% if static_file.basename contains "-thumb" %}
 		{% else %}
+  		{% if static_file.path contains "extra-ignore" %}
+			{% else %}
 
- 		 	{% if static_file.extname == ".png" or static_file.extname == ".jpg" or static_file.extname == ".gif" %}
+ 			 	{% if static_file.extname == ".png" or static_file.extname == ".jpg" or static_file.extname == ".gif" %}
 
-				{% assign image_url = static_file.path | remove_first: "/images/" %}
-				{% assign image_caption = static_file.basename %}
+					{% assign image_url = static_file.path | remove_first: "/images/" %}
+					{% assign image_caption = static_file.basename %}
 
-				{% assign gallery_images = gallery_images | push: image_url %}
-				{% assign gallery_captions = gallery_captions | push: image_caption %}
+					{% assign gallery_images = gallery_images | push: image_url %}
+					{% assign gallery_captions = gallery_captions | push: image_caption %}
 
-  		{% endif %}
+ 	 			{% endif %}
+ 	 		{% endif %}
   	{% endif %}
   {% endif %}
 {% endfor %}
