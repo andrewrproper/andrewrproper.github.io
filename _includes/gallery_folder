@@ -1,0 +1,80 @@
+{% comment %}
+*
+*   This include lets you easily embed a gallery into your post.
+*   To use the gallery include you...
+*
+*   1. ...need two images: a thumbnail and a big image.
+*   2. Name the thumbnail gallery-image-thumb.jpg and...
+*   3. ...name the big gallery-image.jpg
+*   4. Define the big version in frontmatter,
+*
+*   gallery:
+*       - image_url: gallery-image.jpg
+*
+*   5. Give your image a caption – works without captions, too.
+*
+*   gallery:
+*       - image_url: gallery-image.jpg
+*          caption: Starting Page with huge One Logo
+*
+*   6. Add the include whereever you want in your content like this:
+*
+*   {% include gallery %}
+*
+*   Check out the example page › http://phlow.github.io/feeling-responsive/design/gallery/
+*
+* ======= modified by andrewproper, 2018-05
+*
+*  new arguments:
+*
+*    folder : "relative path"
+*
+*  example usage:
+*
+*    {% include gallery_mod1 folder='/art/2002--Diving-Flame/' %}
+*
+*  what it does:
+*    1. search for files ending in ".jpg" or ".png" under that path
+*    2. display those as images in the gallery
+*
+{% endcomment %}
+
+
+{% assign gallery_images = "" | split: "," %}
+{% assign gallery_captions = "" | split: "," %}
+
+{% for static_file in site.static_files %}
+  {% if static_file.path contains include.folder %}
+  	{% if static_file.basename contains "-thumb" %}
+		{% else %}
+
+ 		 	{% if static_file.extname == ".png" or static_file.extname == ".jpg" or static_file.extname == ".gif" %}
+
+				{% assign image_url = static_file.path | remove_first: "/images/" %}
+				{% assign image_caption = static_file.basename %}
+
+				{% assign gallery_images = gallery_images | push: image_url %}
+				{% assign gallery_captions = gallery_captions | push: image_caption %}
+
+  		{% endif %}
+  	{% endif %}
+  {% endif %}
+{% endfor %}
+
+<div>
+	<ul class="clearing-thumbs small-block-grid-4" data-clearing>
+
+		{% assign array_last_index = gallery_images | size | minus: 1 %}
+
+		{% for index in ( 0..array_last_index ) %}
+
+			{% capture image_url %}{{ gallery_images[ index ] }}{% endcapture %}
+			{% assign split_url = image_url | split: '.' %}
+			{% capture thumb_url %}{{split_url[0]}}-thumb.{{split_url[1]}}{% endcapture %}
+
+			{% assign image_caption = gallery_captions[ index ] %}
+
+		<li><a href="{{ site.urlimg }}{{ image_url }}"><img {% if image_caption %}data-caption="{{ image_caption }}"{% endif %} src="{{ site.urlimg }}{{ thumb_url }}" alt="{{ image_caption }}"></a></li>
+		{% endfor %}
+	</ul>
+</div>

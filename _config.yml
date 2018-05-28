@@ -25,9 +25,12 @@ author: andrewproper
 
 # This URL is the main address for absolute links. Don't include a slash at the end.
 #
+
+# Production URL:
 #url: 'https://andrewproper.github.io'
-# blank URL for testing:
-url: ''
+
+# Development/Testing:
+url: 'http://localhost:4000'
 baseurl: '/'
 
 # This is for the editing function in _/includes/improve_content
@@ -41,8 +44,12 @@ improve_content:
 # Example: <img src="{{ site.urlimg }}{{ post.image.title }}" />
 # Markdown-Example for posts ![Image Text]({{ site.urlimg }}image.jpg)
 #
-#-#urlimg: 'https://phlow.github.io/feeling-responsive/images/'
-urlimg: 'images/'
+
+# Production URL:
+#urlimg: 'https://andrewproper.github.io/images/'
+
+# Development/Testing:
+urlimg: 'http://localhost:4000/images/'
 
 
 # Logo size is 600x80 pixels
@@ -279,5 +286,8 @@ asciidoctor:
     source-highlighter: coderay
     coderay-css: style
     icons: font
+
+
+art_galleries_rel_path_prefix: "/images/art"
 
 
