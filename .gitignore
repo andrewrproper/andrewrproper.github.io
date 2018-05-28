@@ -5,3 +5,4 @@ _site/
 .*.sw*
 *~
 *.vim
+png-extra-gitignore/
