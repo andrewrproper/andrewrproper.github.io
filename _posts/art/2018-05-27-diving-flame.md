@@ -8,7 +8,7 @@ tags:
     - GIMP
     - fractal
 image:
-   thumb: "/art/2002--Diving-Flame/arp_sketch56-0-0-2_diving_flame-thumb.jpg"
+   thumb: "/art/Diving Flame/arp_sketch56-0-0-2_diving_flame-thumb.jpg"
 breadcrumb: true
 ---
 
@@ -19,8 +19,7 @@ variations on it, and it has remained one of my favourites, if not my
 most favourite artwork that I have created. It has a simple beauty and appeal
 that I enjoy greatly.
 
-
-{% include gallery_folder folder='/art/2002--Diving-Flame/' %}
+{% include gallery_folder title=page.title %}
 
 
 

@@ -40,11 +40,16 @@
 {% endcomment %}
 
 
+
+{% assign folder = "/art/" | append: include.title | append: "/" %}
+
+
+
 {% assign gallery_images = "" | split: "," %}
 {% assign gallery_captions = "" | split: "," %}
 
 {% for static_file in site.static_files %}
-  {% if static_file.path contains include.folder %}
+  {% if static_file.path contains folder %}
   	{% if static_file.basename contains "-thumb" %}
 		{% else %}
   		{% if static_file.path contains "extra-ignore" %}
