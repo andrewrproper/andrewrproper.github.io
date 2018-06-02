@@ -7,8 +7,6 @@ categories:
 tags:
     - GIMP
     - fractal
-image:
-   thumb: "/art/Diving Flame/arp_sketch56-0-0-2_diving_flame-thumb.jpg"
 breadcrumb: true
 ---
 

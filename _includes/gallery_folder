@@ -33,6 +33,10 @@
 *
 *    {% include gallery_mod1 folder='/art/2002--Diving-Flame/' %}
 *
+*  or:
+*
+*    {% include gallery_mod1 folder='/art/2002--Diving-Flame/' show_caption=true %}
+*
 *  what it does:
 *    1. search for files ending in ".jpg" or ".png" under that path
 *    2. display those as images in the gallery
@@ -82,7 +86,14 @@
 
 			{% assign image_caption = gallery_captions[ index ] %}
 
-		<li><a href="{{ site.urlimg }}{{ image_url }}"><img {% if image_caption %}data-caption="{{ image_caption }}"{% endif %} src="{{ site.urlimg }}{{ thumb_url }}" alt="{{ image_caption }}"></a></li>
+		<li><a href="{{ site.urlimg }}{{ image_url }}"
+			><img 
+				{% if include.show_caption %}
+					{% if image_caption %}data-caption="{{ image_caption }}"{% endif %} 
+				{% endif %}
+				src="{{ site.urlimg }}{{ thumb_url }}" 
+				alt="{{ image_caption }}"
+		></a></li>
 		{% endfor %}
 	</ul>
 </div>
