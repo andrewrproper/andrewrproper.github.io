@@ -217,11 +217,11 @@ body.video cite { color: #fff; }
 ------------------------------------------------------------------- */
 
 #page-meta, #page-meta a {
-    color: $grey-5;
+    color: $grey-8;
 }
 
 #page-meta .button {
-    background: $grey-5;
+    background: $grey-8;
     border: 0;
 }
 #page-meta .button {
@@ -313,6 +313,7 @@ body.video cite { color: #fff; }
 }
 
 .social-icons {
+	display: none;
     margin-bottom: 10px !important;
 
 // Beware of SCSS-Syntax here

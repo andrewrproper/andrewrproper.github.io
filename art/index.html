@@ -70,10 +70,6 @@ card_image_margin: 10
 
 					<a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" title="{{ post.title | escape_once }}">
 
-						<div class="card-divider card-text">
-							{% if post.subheadline %}{{ post.subheadline }} › {% endif %}<strong>{{ post.title }}</strong>
-						</div>
-
 						<div class="image-container">
 							<span class="image-helper"></span>
 							<img 
@@ -81,6 +77,10 @@ card_image_margin: 10
 								class="image-in-card"
 								></img>
 							<span class="image-helper"></span>
+						</div>
+
+						<div class="card-divider card-text">
+							{% if post.subheadline %}{{ post.subheadline }} › {% endif %}<strong>{{ post.title }}</strong>
 						</div>
 
 						<div class="card-section card-text card-sub-text">
