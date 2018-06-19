@@ -6,7 +6,7 @@
 #
 layout: frontpage
 header:
-  image_fullwidth: header_unsplash_12.jpg
+  image_fullwidth: 2018-06--code+art--1600.jpg
 widget1:
   title: "Software"
   url: 'software/'
