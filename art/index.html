@@ -57,50 +57,81 @@ card_image_margin: 10
 
 </style>
 
+
+{% assign folder = "/art/" %}
+{% assign gallery_images = "" | split: "," %}
+{% assign gallery_captions = "" | split: "," %}
+
+{% for static_file in site.static_files %}
+  {% if static_file.path contains folder %}
+  	{% if static_file.basename contains "post-thumb" %}
+		{% else %}
+	  	{% if static_file.basename contains "-thumb" %}
+ 	 		{% if static_file.path contains "extra-ignore" %}
+				{% else %}
+
+ 				 	{% if static_file.extname == ".png" or static_file.extname == ".jpg" or static_file.extname == ".gif" %}
+
+						{% assign thumb_url = static_file.path | remove_first: "/images/" %}
+						{% assign image_caption = static_file.basename %}
+	
+						{% assign gallery_images = gallery_images | push: thumb_url %}
+						{% assign gallery_captions = gallery_captions | push: image_caption %}
+
+	 	 			{% endif %}
+ 	 			{% endif %}
+ 	 		{% endif %}
+  	{% endif %}
+  {% endif %}
+{% endfor %}
+
+
+
 <div id="blog-index" class="row">
 	<div class="small-12 columns t30">
 		<h1>{{ page.title }}</h1>
 		{% if page.teaser %}<p class="teaser">{{ page.teaser }}</p>{% endif %}
 
-		{% for repeat in (1..10) %}<!-- BEGIN - this repeat loop is for testing -->
-		{% endfor %}<!-- END - this repeat loop is for testing -->
 
-			{% for post in site.categories.art %}
-				{% assign post_thumb = "/art/" | append: post.title | append: "/post-thumb.jpg" %}
+		<div id="lightgallery">
 
-				<div class="card" style="width: {{ page.card_width }}; float: left; margin: 1em; ">
+			{% assign array_last_index = gallery_images | size | minus: 1 %}
 
-					<a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" title="{{ post.title | escape_once }}">
+			{% for index in ( 0..array_last_index ) %}
 
-						<div class="image-container">
-							<span class="image-helper"></span>
-							<img 
-								src="../images/{{ post_thumb }}"
-								class="image-in-card"
-								></img>
-							<span class="image-helper"></span>
-						</div>
+				{% capture thumb_url %}{{ gallery_images[ index ] }}{% endcapture %}
+				{% assign split_url = thumb_url | split: '-thumb' %}
+				{% capture image_url %}{{split_url[0]}}{{split_url[1]}}{% endcapture %}
+	
+				{% assign image_caption = gallery_captions[ index ] %}
 
-						<div class="card-divider card-text">
-							{% if post.subheadline %}{{ post.subheadline }} › {% endif %}<strong>{{ post.title }}</strong>
-						</div>
-
-						<div class="card-section card-text card-sub-text">
-							{% if post.meta_description %}
-								{{ post.meta_description | strip_html | escape }}
-							{% elsif post.teaser %}
-								{{ post.teaser | strip_html | escape }}
-								<br/>
+			    <a href="{{ site.urlimg }}{{ image_url }}"
+						><img 
+							{% if include.show_caption %}
+								{% if image_caption %}data-caption="{{ image_caption }}"{% endif %} 
 							{% endif %}
-						</div>
-					</a>
-
-				</div>
+							src="{{ site.urlimg }}{{ thumb_url }}" 
+							alt="{{ image_caption }}"
+						></a>
+	
 			{% endfor %}
 
+		</div>
 
 	</div><!-- /.small-12.columns -->
 </div><!-- /.row -->
+
+
+<script type="text/javascript">
+
+	console.log("init lightgallery");
+	lightGallery(document.getElementById('lightgallery'), {
+/*
+		thumbnail:true
+*/
+	}); 
+
+</script>
 
 
 <!-- vim: ts=2

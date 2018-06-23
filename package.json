@@ -1,0 +1,48 @@
+{
+  "name": "portfolio-git",
+  "version": "1.0.0",
+  "description": "Portfolio of Andrew Proper",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/endosynth/portfolio.git"
+  },
+  "keywords": [
+    "portfolio",
+    "software",
+    "art"
+  ],
+  "author": "Andrew R. Proper",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/endosynth/portfolio/issues"
+  },
+  "homepage": "https://gitlab.com/endosynth/portfolio#README",
+  "devDependencies": {
+    "css-loader": "^0.28.11",
+    "file-loader": "^1.1.11",
+    "lightgallery.js": "^1.0.3",
+    "style-loader": "^0.21.0",
+    "url-loader": "^1.0.1",
+    "webpack": "^4.12.0",
+    "webpack-cli": "^3.0.8"
+  },
+  "dependencies": {
+    "lg-autoplay": "^1.0.4",
+    "lg-fullscreen": "^1.0.1",
+    "lg-fullscreen.js": "^1.0.0",
+    "lg-hash": "^1.0.4",
+    "lg-pager": "^1.0.2",
+    "lg-pager.js": "^1.0.0",
+    "lg-share": "^1.1.0",
+    "lg-thumbnail": "^1.1.0",
+    "lg-thumbnail.js": "^1.0.0",
+    "lg-video": "^1.2.2",
+    "lg-zoom": "^1.1.0",
+    "lg-zoom.js": "^1.0.1",
+    "lightgallery": "^1.6.11"
+  }
+}
