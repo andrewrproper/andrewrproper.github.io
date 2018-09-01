@@ -55,6 +55,17 @@ card_image_margin: 10
 		overflow: auto;
 	}
 
+
+	.lg-img {
+		// prevent spaces between the images
+		display: block;
+		float: left;
+	}
+	.lg-img-a {
+		// placeholder, for future possible use
+	}
+
+
 </style>
 
 
@@ -106,12 +117,15 @@ card_image_margin: 10
 				{% assign image_caption = gallery_captions[ index ] %}
 
 			    <a href="{{ site.urlimg }}{{ image_url }}"
+							class="lg-img-a"
 						><img 
 							{% if include.show_caption %}
 								{% if image_caption %}data-caption="{{ image_caption }}"{% endif %} 
 							{% endif %}
 							src="{{ site.urlimg }}{{ thumb_url }}" 
 							alt="{{ image_caption }}"
+							class="lg-img"
+						><img 
 						></a>
 	
 			{% endfor %}
