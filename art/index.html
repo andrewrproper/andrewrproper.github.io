@@ -16,45 +16,9 @@ card_image_margin: 10
 	can be moved to .scss at some point 
 	*/
 
-  .image-container {
-		width:  {{ page.card_width }}px; 
-		height: {{ page.card_width }}px;
-    white-space: nowrap; /* this is required unless you put the helper span closely near the img */
-    text-align: center; 
-		margin: 0;
-		background-color: #000;
-		border: 6px solid #000;
+	.lightgallery {
+		// placeholder, for future possible use
 	}
-
-  /* 
-	https://stackoverflow.com/questions/7273338/how-to-vertically-align-an-image-inside-a-div 
-	*/
-	.image-helper {
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;	
-		width: 0px;
-	}
-
-	.image-in-card {
-/*
-		margin: {{ page.card_image_margin }}px;
-*/
-		max-width:  {{ page.card_width | minus: page.card_image_margin | minus: page.card_image_margin }}px; 
-		max-height: {{ page.card_width | minus: page.card_image_margin | minus: page.card_image_margin }}px; 
-		vertical-align: middle;
-		margin: auto;
-	}
-
-  .card-text,
-  .card-sub-text {
-		max-width:  {{ page.card_width }}px; 
-	}
-  .card-sub-text {
-		height: 5em;
-		overflow: auto;
-	}
-
 
 	.lg-img {
 		// prevent spaces between the images
@@ -78,13 +42,13 @@ card_image_margin: 10
   	{% if static_file.basename contains "post-thumb" %}
 		{% else %}
 	  	{% if static_file.basename contains "-thumb" %}
- 	 		{% if static_file.path contains "extra-ignore" %}
+ 		 		{% if static_file.path contains "extra-ignore" %}
 				{% else %}
 
  				 	{% if static_file.extname == ".png" or static_file.extname == ".jpg" or static_file.extname == ".gif" %}
 
 						{% assign thumb_url = static_file.path | remove_first: "/images/" %}
-						{% assign image_caption = static_file.basename %}
+						{% assign image_caption = static_file.basename | remove_first: "-thumb"%}
 	
 						{% assign gallery_images = gallery_images | push: thumb_url %}
 						{% assign gallery_captions = gallery_captions | push: image_caption %}
@@ -118,12 +82,14 @@ card_image_margin: 10
 
 			    <a href="{{ site.urlimg }}{{ image_url }}"
 							class="lg-img-a"
+							title="{{ image_caption }}"
 						><img 
 							{% if include.show_caption %}
 								{% if image_caption %}data-caption="{{ image_caption }}"{% endif %} 
 							{% endif %}
 							src="{{ site.urlimg }}{{ thumb_url }}" 
 							alt="{{ image_caption }}"
+							title="{{ image_caption }}"
 							class="lg-img"
 						><img 
 						></a>
