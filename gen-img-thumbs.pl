@@ -71,6 +71,7 @@ sub main {
 	my $thumb_size = '250x250';
 	my $is_jpeg_suffix_re = qr/.+\.jpg$/;
 	my $is_thumb_re = qr/\-thumb/;
+	my $match_2_depths_re = qr{/images/[^/]+/[^/]+};
 
 	# END - settings
 
@@ -95,28 +96,34 @@ sub main {
 				$full_fn =~ $is_jpeg_suffix_re && 
 
 				# if it does not match a thumb filename
-				$full_fn !~ $is_thumb_re  
+				$full_fn !~ $is_thumb_re 
 			) {
 
-				# make a thumbnail filename, based on the source filename
-				my $thumb_fn = $full_fn;
-				$thumb_fn =~ s/(\.[^\.]+)$/-thumb$1/; # add a string just before the '.jpg' portion
+				if ( $parent_dir !~ $match_2_depths_re ) {
+					debug( "SKIP - not 2 depths: $parent_dir - $rel_fn" );
+				} else {
 
-				# create an ImageMagick command-line command
-				my $cmd = qq(magick ). 
-					# source image filename
-					qq("$full_fn" ).
-					# scale down to have smallest side fit this geometry
-					qq(-thumbnail "$thumb_size^" ). 
-					# keep image centered when scaling down
-					qq(-gravity center ).
-					# trim image down to this geometry, after scale down by -thumbnail
-					qq(-extent "$thumb_size" ).  
-					# output image filename
-					qq("$thumb_fn" );
+					# make a thumbnail filename, based on the source filename
+					my $thumb_fn = $full_fn;
+					$thumb_fn =~ s/(\.[^\.]+)$/-thumb$1/; # add a string just before the '.jpg' portion
 
-				run_cmd( $cmd );
-				$processed_count++;
+					# create an ImageMagick command-line command
+					my $cmd = qq(magick ). 
+						# source image filename
+						qq("$full_fn" ).
+						# scale down to have smallest side fit this geometry
+						qq(-thumbnail "$thumb_size^" ). 
+						# keep image centered when scaling down
+						qq(-gravity center ).
+						# trim image down to this geometry, after scale down by -thumbnail
+						qq(-extent "$thumb_size" ).  
+						# output image filename
+						qq("$thumb_fn" );
+
+					run_cmd( $cmd );
+					$processed_count++;
+				}
+
 			}
 
 		},
