@@ -68,7 +68,7 @@ sub main {
 		$FindBin::Bin.'/images/software/',
 	);
 
-	my $thumb_size = '250x250';
+	my $thumb_size = '180x180';
 	my $is_jpeg_suffix_re = qr/.+\.jpg$/;
 	my $is_thumb_re = qr/\-thumb/;
 	my $match_2_depths_re = qr{/images/[^/]+/[^/]+};
