@@ -17,11 +17,7 @@ card_image_margin: 10
 	*/
 
 	#lightgallery-wrap {
-/*
-		float: left;
-		background-color: black;
-		border: 2em solid black;
-*/
+
 	}
 	#lightgallery {
 	}
@@ -29,17 +25,22 @@ card_image_margin: 10
 		clear: both;
 	}
 
+	.lg-img-a {
+		// placeholder, for future possible use
+	}
+
 	.lg-img {
 		// prevent spaces between the images
 		display: block;
 		float: left;
-		background-color: black;
-	}
-	.lg-img-a {
-		// placeholder, for future possible use
-		background-color: black;
-	}
 
+		border: 0.4em solid black;
+
+		// override setting from styles_feeling_responsive.css
+		border-radius: initial;
+		-moz-border-radius: initial;
+		-webkit-border-radius: initial;
+	}
 
 </style>
 
@@ -118,12 +119,11 @@ card_image_margin: 10
 
 <script type="text/javascript">
 
-	console.log("init lightgallery");
-	lightGallery(document.getElementById('lightgallery'), {
+//	console.log("init lightgallery");
+//	lightGallery(document.getElementById('lightgallery'), {
 /*
 		thumbnail:true
 */
-	}); 
 
 </script>
 
