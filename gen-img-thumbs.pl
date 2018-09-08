@@ -68,7 +68,11 @@ sub main {
 		$FindBin::Bin.'/images/software/',
 	);
 
-	my $thumb_size = '180x180';
+	# You can use a larger thumb_size_scale in order to cause the edges of the
+	# resulting image to be trimmed by the smaller thumb_size_crop value.
+	my $thumb_size_scale = '220x220';
+	my $thumb_size_crop = '180x180';
+
 	my $is_jpeg_suffix_re = qr/.+\.jpg$/;
 	my $is_thumb_re = qr/\-thumb/;
 	my $match_2_depths_re = qr{/images/[^/]+/[^/]+};
@@ -112,11 +116,11 @@ sub main {
 						# source image filename
 						qq("$full_fn" ).
 						# scale down to have smallest side fit this geometry
-						qq(-thumbnail "$thumb_size^" ). 
+						qq(-thumbnail "$thumb_size_scale^" ). 
 						# keep image centered when scaling down
 						qq(-gravity center ).
 						# trim image down to this geometry, after scale down by -thumbnail
-						qq(-extent "$thumb_size" ).  
+						qq(-extent "$thumb_size_crop" ).  
 						# output image filename
 						qq("$thumb_fn" );
 
