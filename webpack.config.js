@@ -15,15 +15,6 @@ module.exports = {
 		path: path.resolve( __dirname, 'assets/js/webpack/' ),
 		filename: "bundle.js"
   },
-//	externals: {
-//		jquery: "jQuery"
-//	},
-//	resolve: {
-//		alias: {
-//			jquery: "jquery/src/jquery"
-//		}
-//	},
-//
 	plugins: [
 		new webpack.ProvidePlugin( {
 			$: 'jquery',
