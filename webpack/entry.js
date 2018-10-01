@@ -8,28 +8,11 @@
 
 require( "jquery" ); // dependency of: fancybox
 
-
-//require( "lightgallery.js" );
-//require( "lg-thumbnail.js" );
-//require( "lg-fullscreen.js" );
-//require( "lg-pager.js" );
-//import "lightgallery/dist/css/lightgallery.css";
-//import "lightgallery/dist/css/lg-transitions.css";
-
-//-//window.jQuery = $;  // workaround to let fancybox work with jQuery
 require( "@fancyapps/fancybox" );
-
 require( "@fancyapps/fancybox/dist/jquery.fancybox.css" );
 
 
-
-//console.log("entry.js - hello world");
-
-
-
-
-
-var options = {
+var fancybox_options = {
 
   // Close existing modals
   // Set this to false if you do not need to stack multiple instances
@@ -194,7 +177,7 @@ window.jQuery = $;
 $( document ).ready( function () {
   console.log("BEGIN - init fancybox on " + $('[data-fancybox="gallery"]').length + " elements" );
 
-//  $('[data-fancybox="gallery"]').fancybox( options );
+  $('[data-fancybox="gallery"]').fancybox( fancybox_options );
 
   console.log("END - init fancybox");
 } );
