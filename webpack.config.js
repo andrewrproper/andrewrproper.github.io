@@ -1,8 +1,6 @@
 
-const path = require( "path" );
-
+const path 	= require( "path" );
 var webpack = require( "webpack" );
-
 
 
 module.exports = {
@@ -25,32 +23,14 @@ module.exports = {
 	],
   module: {
     rules: [
-//      {
-//        test: /\.jsx?$/,
-//        exclude: /(node_modules)/,
-//        loader: 'babel-loader',
-//        query: {
-//          presets: ['react', 'es2015']
-//        }
-//      },
-
-//        exclude: /(node_modules)/,
-
       {
         test: /\.css$/,
         use: [
           'style-loader',
           'css-loader'
-//          'postcss-loader'
+          //'postcss-loader'
         ]
       },
-/*
-      { 
-				// https://github.com/webpack-contrib/css-loader/issues/38
-        test: /\.(woff|woff(2)?|eot|ttf|svg)(\?[a-z0-9=.]+)?$/, 
-        loader: 'url-loader?limit=100000'
-      }
-*/
       {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
@@ -79,3 +59,5 @@ module.exports = {
     ]
   }
 };
+
+
