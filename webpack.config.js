@@ -1,16 +1,37 @@
+
 const path = require( "path" );
 
+var webpack = require( "webpack" );
+
+
+
 module.exports = {
+	mode: "development", // or "production"
+
   // webpack folder's entry js - excluded from jekll's build process.
-  entry: {
-		main: "./webpack/entry.js",
-		photoswipe: "./node_modules/photoswipe/dist/photoswipe.js"
-	},
+  entry: "./webpack/entry.js",
   output: {
-    // we're going to put the generated file in the assets folder so jekyll will grab it.
-      path: path.resolve( __dirname, 'assets/js/webpack/' ),
-      filename: "bundle.js"
+		// we're going to put the generated file in the assets folder so jekyll will grab it.
+		path: path.resolve( __dirname, 'assets/js/webpack/' ),
+		filename: "bundle.js"
   },
+//	externals: {
+//		jquery: "jQuery"
+//	},
+//	resolve: {
+//		alias: {
+//			jquery: "jquery/src/jquery"
+//		}
+//	},
+//
+	plugins: [
+		new webpack.ProvidePlugin( {
+			$: 'jquery',
+			jQuery: 'jquery',
+			'window.$': 'jquery',
+			'window.jQuery': 'jquery'   // for fancybox
+		} )
+	],
   module: {
     rules: [
 //      {

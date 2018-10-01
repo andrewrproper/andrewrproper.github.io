@@ -5,7 +5,7 @@ header:
 title: "Art"
 teaser: "A collection of my artworks."
 breadcrumb: true
-permalink: "art/index-photoswipe.html"
+permalink: "art/fancybox.html"
 card_width: 240
 card_image_margin: 10
 ---
@@ -16,12 +16,12 @@ card_image_margin: 10
 	can be moved to .scss at some point 
 	*/
 
-	#photoswipe-wrap {
+	#fancybox-wrap {
 
 	}
-	#photoswipe {
+	#fancybox {
 	}
-	#photoswipe-end {
+	#fancybox-end {
 		clear: both;
 	}
 
@@ -80,10 +80,8 @@ card_image_margin: 10
 		{% if page.teaser %}<p class="teaser">{{ page.teaser }}</p>{% endif %}
 
 
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-
-		<div id="photoswipe-wrap">
-		<div id="photoswipe" class ="pswp">
+		<div id="fancybox-wrap">
+		<div id="fancybox" class ="pswp">
 
 			{% assign array_last_index = gallery_images | size | minus: 1 %}
 
@@ -95,7 +93,10 @@ card_image_margin: 10
 	
 				{% assign image_caption = gallery_captions[ index ] %}
 
-			    <a href="{{ site.urlimg }}{{ image_url }}"
+			    <a 
+              data-fancybox="gallery"
+              data-caption="{{ image_caption }}"
+              href="{{ site.urlimg }}{{ image_url }}"
 							class="lg-img-a"
 							title="{{ image_caption }}"
 						><img 
@@ -106,32 +107,18 @@ card_image_margin: 10
 							alt="{{ image_caption }}"
 							title="{{ image_caption }}"
 							class="lg-img"
-						><img 
+						></img 
 						></a>
 	
 			{% endfor %}
 
-			<div id="photoswipe-end"></div>
+			<div id="fancybox-end"></div>
 		</div>
 		</div>
 
 	</div><!-- /.small-12.columns -->
 </div><!-- /.row -->
 
-
-<script type="text/javascript">
-
-	console.log("init photoswipe");
-	photoswipe(
-		document.getElementById('photoswipe'), 
-		{
-/*
-			thumbnail:true
-*/
-		}
-	);
-
-</script>
 
 
 <!-- vim: ts=2
