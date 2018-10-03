@@ -72,6 +72,8 @@ sub main {
 	# resulting image to be trimmed by the smaller thumb_size_crop value.
 	my $thumb_size_scale = '220x220';
 	my $thumb_size_crop = '180x180';
+	my $thumb_small_size_scale = '200x200';
+	my $thumb_small_size_crop = '120x120';
 
 	my $is_jpeg_suffix_re = qr/.+\.jpg$/;
 	my $is_thumb_re = qr/\-thumb/;
@@ -107,6 +109,8 @@ sub main {
 					debug( "SKIP - not 2 depths: $parent_dir - $rel_fn" );
 				} else {
 
+          # === thumbnail (large)
+
 					# make a thumbnail filename, based on the source filename
 					my $thumb_fn = $full_fn;
 					$thumb_fn =~ s/(\.[^\.]+)$/-thumb$1/; # add a string just before the '.jpg' portion
@@ -123,6 +127,27 @@ sub main {
 						qq(-extent "$thumb_size_crop" ).  
 						# output image filename
 						qq("$thumb_fn" );
+
+					run_cmd( $cmd );
+
+
+          # === thumbnail (small)
+
+					my $thumb_small_fn = $full_fn;
+					$thumb_small_fn =~ s/(\.[^\.]+)$/-thumb-sm$1/; # add a string just before the '.jpg' portion
+
+					# create an ImageMagick command-line command
+					my $cmd = qq(magick ). 
+						# source image filename
+						qq("$full_fn" ).
+						# scale down to have smallest side fit this geometry
+						qq(-thumbnail "$thumb_small_size_scale^" ). 
+						# keep image centered when scaling down
+						qq(-gravity center ).
+						# trim image down to this geometry, after scale down by -thumbnail
+						qq(-extent "$thumb_small_size_crop" ).  
+						# output image filename
+						qq("$thumb_small_fn" );
 
 					run_cmd( $cmd );
 					$processed_count++;
