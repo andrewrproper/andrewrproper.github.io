@@ -31,11 +31,11 @@ permalink: "art/fancybox.html"
 
 	}
 
-	.lg-img-a {
+	.gallery-img-a {
 
 	}
 
-	.lg-img {
+	.gallery-img {
 
 		/* override setting from styles_feeling_responsive.css */
 		border-radius: initial;
@@ -62,20 +62,23 @@ permalink: "art/fancybox.html"
 {% for static_file in site.static_files %}
   {% if static_file.path contains folder %}
   	{% if static_file.basename contains "post-thumb" %}
-		{% else %}
-	  	{% if static_file.basename contains "-thumb" %}
- 		 		{% if static_file.path contains "extra-ignore" %}
-				{% else %}
-
- 				 	{% if static_file.extname == ".png" or static_file.extname == ".jpg" or static_file.extname == ".gif" %}
-
-						{% assign thumb_url = static_file.path | remove_first: "/images/" %}
-						{% assign image_caption = static_file.basename | remove_first: "-thumb"%}
-	
-						{% assign gallery_images = gallery_images | push: thumb_url %}
-						{% assign gallery_captions = gallery_captions | push: image_caption %}
-
-	 	 			{% endif %}
+    {% else %}
+  	  {% if static_file.basename contains "thumb-sm" %}
+		  {% else %}
+  	  	{% if static_file.basename contains "-thumb" %}
+  		 		{% if static_file.path contains "extra-ignore" %}
+  				{% else %}
+  
+  				 	{% if static_file.extname == ".png" or static_file.extname == ".jpg" or static_file.extname == ".gif" %}
+  
+  						{% assign thumb_url = static_file.path | remove_first: "/images/" %}
+  						{% assign image_caption = static_file.basename | remove_first: "-thumb"%}
+  	
+  						{% assign gallery_images = gallery_images | push: thumb_url %}
+  						{% assign gallery_captions = gallery_captions | push: image_caption %}
+  
+  	 	 			{% endif %}
+  	 			{% endif %}
  	 			{% endif %}
  	 		{% endif %}
   	{% endif %}
@@ -89,6 +92,7 @@ permalink: "art/fancybox.html"
 		<h1>{{ page.title }}</h1>
 		{% if page.teaser %}<p class="teaser">{{ page.teaser }}</p>{% endif %}
 
+<p class="panel">
 
     <div class="table">
     <div class="row">
@@ -100,8 +104,10 @@ permalink: "art/fancybox.html"
 			{% for index in ( 0..array_last_index ) %}
 
 				{% capture thumb_url %}{{ gallery_images[ index ] }}{% endcapture %}
+
 				{% assign split_url = thumb_url | split: '-thumb' %}
 				{% capture image_url %}{{split_url[0]}}{{split_url[1]}}{% endcapture %}
+				{% capture thumb_small_url %}{{split_url[0]}}-thumb-sm{{split_url[1]}}{% endcapture %}
 	
 				{% assign image_caption = gallery_captions[ index ] %}
 
@@ -109,7 +115,7 @@ permalink: "art/fancybox.html"
               data-fancybox="gallery"
               data-caption="{{ image_caption }}"
               href="{{ site.urlimg }}{{ image_url }}"
-							class="lg-img-a"
+							class="gallery-img-a"
 							title="{{ image_caption }}"
 						><img 
 							{% if include.show_caption %}
@@ -118,7 +124,16 @@ permalink: "art/fancybox.html"
 							src="{{ site.urlimg }}{{ thumb_url }}" 
 							alt="{{ image_caption }}"
 							title="{{ image_caption }}"
-							class="lg-img"
+							class="gallery-img show-for-large-up"
+						></img 
+						><img 
+							{% if include.show_caption %}
+								{% if image_caption %}data-caption="{{ image_caption }}"{% endif %} 
+							{% endif %}
+							src="{{ site.urlimg }}{{ thumb_small_url }}" 
+							alt="{{ image_caption }}"
+							title="{{ image_caption }}"
+							class="gallery-img hide-for-large-up"
 						></img 
 						></a>
 	
@@ -128,6 +143,8 @@ permalink: "art/fancybox.html"
 		</div>
 		</div>
 		</div>
+
+</p>
 
 	</div><!-- /.small-12.columns -->
 </div><!-- /.row -->
