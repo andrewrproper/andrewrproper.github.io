@@ -1,0 +1,22 @@
+---
+
+# make target paths relative to this program's location
+target_paths:
+  - 'images/art/'
+  - 'images/software/'
+
+thumb_size_scale: '320x320'
+thumb_size_crop: '220x222'
+
+#thumb_size_scale: '220x220'
+#thumb_size_crop: '180x180'
+
+thumb_small_enabled: 0
+thumb_small_size_scale: '200x200'
+thumb_small_size_crop: '120x120'
+
+is_jpeg_suffix_re_str: '.+\.jpg$'
+is_thumb_re_str:       '\-thumb'
+match_2_depths_re_str: '/images/[^/]+/[^/]+'
+
+

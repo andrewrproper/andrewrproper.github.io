@@ -44,11 +44,14 @@ Version: ImageMagick 7.0.7-6 Q16 x64 2017-10-04 http://www.imagemagick.org
 use strict;
 use warnings;
 
+use feature 'say';
 use FindBin;
 use File::Find;
 use Carp;
 use Getopt::Long;
-use feature 'say';
+use YAML;
+use Text::Wrap;
+$Text::Wrap::columns = 120;
 
 
 my $debug = 0;
@@ -60,24 +63,40 @@ main();
 
 sub main {
 
-	# BEGIN - settings
+  my %config = load_config();
+
+	# BEGIN - settings, from config
 
 	# make target paths relative to this program's location
-	my @target_paths = (
-		$FindBin::Bin.'/images/art/',
-		$FindBin::Bin.'/images/software/',
-	);
+	my @target_paths = ();
+  if ( ref $config{target_paths} eq 'ARRAY' ) {
+    foreach my $path ( @{ $config{target_paths} } ) {
+      my $v = $FindBin::Bin.'/'.$path;
+      $v =~ s{//+}{/}gs;
+      push @target_paths, $v;
+    }
+	}
+
+  if ( ! @target_paths ) {
+		Carp::confess( 'FATAL - failed to load target_paths from config' );
+  }
 
 	# You can use a larger thumb_size_scale in order to cause the edges of the
 	# resulting image to be trimmed by the smaller thumb_size_crop value.
-	my $thumb_size_scale = '220x220';
-	my $thumb_size_crop = '180x180';
-	my $thumb_small_size_scale = '200x200';
-	my $thumb_small_size_crop = '120x120';
+	my $thumb_size_scale       = $config{thumb_size_scale};
+	my $thumb_size_crop        = $config{thumb_size_crop};
 
-	my $is_jpeg_suffix_re = qr/.+\.jpg$/;
-	my $is_thumb_re = qr/\-thumb/;
-	my $match_2_depths_re = qr{/images/[^/]+/[^/]+};
+  my $thumb_small_enabled    = $config{thumb_small_enabled};
+	my $thumb_small_size_scale = $config{thumb_small_size_scale};
+	my $thumb_small_size_crop  = $config{thumb_small_size_crop};
+
+	my $is_jpeg_suffix_re_str = $config{is_jpeg_suffix_re_str} || '.+\.jpg$';
+	my $is_thumb_re_str       = $config{is_thumb_re_str}       || '\-thumb';
+	my $match_2_depths_re_str = $config{match_2_depths_re_str} || '/images/[^/]+/[^/]+';
+
+	my $is_jpeg_suffix_re = qr/$is_jpeg_suffix_re_str/;
+	my $is_thumb_re       = qr/$is_thumb_re_str/;
+	my $match_2_depths_re = qr/$match_2_depths_re_str/;
 
 	# END - settings
 
@@ -132,25 +151,29 @@ sub main {
 
 
           # === thumbnail (small)
+          if ( $thumb_small_enabled ) {
 
-					my $thumb_small_fn = $full_fn;
-					$thumb_small_fn =~ s/(\.[^\.]+)$/-thumb-sm$1/; # add a string just before the '.jpg' portion
+            my $thumb_small_fn = $full_fn;
+            $thumb_small_fn =~ s/(\.[^\.]+)$/-thumb-sm$1/; # add a string just before the '.jpg' portion
 
-					# create an ImageMagick command-line command
-					my $cmd = qq(magick ). 
-						# source image filename
-						qq("$full_fn" ).
-						# scale down to have smallest side fit this geometry
-						qq(-thumbnail "$thumb_small_size_scale^" ). 
-						# keep image centered when scaling down
-						qq(-gravity center ).
-						# trim image down to this geometry, after scale down by -thumbnail
-						qq(-extent "$thumb_small_size_crop" ).  
-						# output image filename
-						qq("$thumb_small_fn" );
+            # create an ImageMagick command-line command
+            my $cmd = qq(magick ). 
+              # source image filename
+              qq("$full_fn" ).
+              # scale down to have smallest side fit this geometry
+              qq(-thumbnail "$thumb_small_size_scale^" ). 
+              # keep image centered when scaling down
+              qq(-gravity center ).
+              # trim image down to this geometry, after scale down by -thumbnail
+              qq(-extent "$thumb_small_size_crop" ).  
+              # output image filename
+              qq("$thumb_small_fn" );
 
-					run_cmd( $cmd );
-					$processed_count++;
+            run_cmd( $cmd );
+            $processed_count++;
+
+          }
+
 				}
 
 			}
@@ -171,7 +194,7 @@ sub main {
 # run the command and verify it return OK (exit value: 0)
 sub run_cmd {
 	my $cmd = shift;
-	debug( 'CMD: '.$cmd );
+	debug( 'CMD: '.Text::Wrap::wrap( '', '  ', $cmd ) );
 	my @out = qx( $cmd 2>&1 );
 	my $exit_val = $? >> 8;
 	if ( $exit_val ) {
@@ -189,3 +212,22 @@ sub debug {
 		say 'DEBUG - '.$message;
 	}
 }
+
+
+sub load_config {
+
+  my $config_fn = $FindBin::Bin.'/gen-img-thumbs-config.yaml';
+
+  my $ref = {};
+  if ( -e $config_fn ) {
+    $ref = YAML::LoadFile( $config_fn );
+  }
+  if ( ref $ref ne 'HASH' || ! %$ref ) {
+		Carp::confess( 'FATAL - failed to load target_paths from config' );
+  }
+
+  return %$ref;
+}
+
+
+
