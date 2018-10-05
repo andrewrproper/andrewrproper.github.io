@@ -1,0 +1,35 @@
+
+
+.table {
+  display: table;
+}
+	.row {
+  display: table-row;
+	}
+	.cell {
+  display: table-cell;
+  text-align: center;
+}
+
+
+li.gallery-img {
+  padding: 0px;
+  margin: 0px;
+}
+img.gallery-img {
+
+	/* override setting from styles_feeling_responsive.css */
+	border-radius: initial;
+	-moz-border-radius: initial;
+	-webkit-border-radius: initial;
+
+
+  /* width: 100% of container box; stretch to fill */
+  width: 100%;
+  /* height auto allows image to keep aspect ratios as it resizes */
+  height: auto;
+
+	border: 3px solid black;
+}
+
+
