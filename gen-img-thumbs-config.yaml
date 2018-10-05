@@ -8,9 +8,6 @@ target_paths:
 thumb_size_scale: '320x320'
 thumb_size_crop: '220x222'
 
-#thumb_size_scale: '220x220'
-#thumb_size_crop: '180x180'
-
 thumb_small_enabled: 0
 thumb_small_size_scale: '200x200'
 thumb_small_size_crop: '120x120'

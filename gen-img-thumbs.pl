@@ -10,6 +10,7 @@
 	options:
 	  --debug    # print debug output
 
+  config file: gen-img-thumbs-config.yaml
 
 =head1 CHANGES
 
@@ -83,12 +84,12 @@ sub main {
 
 	# You can use a larger thumb_size_scale in order to cause the edges of the
 	# resulting image to be trimmed by the smaller thumb_size_crop value.
-	my $thumb_size_scale       = $config{thumb_size_scale};
-	my $thumb_size_crop        = $config{thumb_size_crop};
+	my $thumb_size_scale       = $config{thumb_size_scale} || '';
+	my $thumb_size_crop        = $config{thumb_size_crop} || '';
 
-  my $thumb_small_enabled    = $config{thumb_small_enabled};
-	my $thumb_small_size_scale = $config{thumb_small_size_scale};
-	my $thumb_small_size_crop  = $config{thumb_small_size_crop};
+  my $thumb_small_enabled    = $config{thumb_small_enabled} || '';
+	my $thumb_small_size_scale = $config{thumb_small_size_scale} || '';
+	my $thumb_small_size_crop  = $config{thumb_small_size_crop} || '';
 
 	my $is_jpeg_suffix_re_str = $config{is_jpeg_suffix_re_str} || '.+\.jpg$';
 	my $is_thumb_re_str       = $config{is_thumb_re_str}       || '\-thumb';
@@ -148,6 +149,7 @@ sub main {
 						qq("$thumb_fn" );
 
 					run_cmd( $cmd );
+          $processed_count++;
 
 
           # === thumbnail (small)
@@ -225,6 +227,28 @@ sub load_config {
   if ( ref $ref ne 'HASH' || ! %$ref ) {
 		Carp::confess( 'FATAL - failed to load target_paths from config' );
   }
+
+
+  my @required_keys = qw(
+    thumb_size_scale
+    thumb_size_crop
+
+    is_jpeg_suffix_re_str
+    is_thumb_re_str
+    match_2_depths_re_str
+  );
+  my $missing = 0;
+  foreach my $k ( @required_keys ) {
+    if ( ! defined $ref->{ $k } ) {
+      say 'ERROR - missing required config key: '.$k;
+      $missing = 1;
+    }
+  }
+  if ( $missing ) {
+    Carp::confess( 'FATAL - missing 1+ required config keys' );
+  }
+
+
 
   return %$ref;
 }
