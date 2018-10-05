@@ -6,8 +6,6 @@ title: "Art"
 teaser: "A collection of my artworks."
 breadcrumb: true
 permalink: "art/"
-card_width: 240
-card_image_margin: 10
 ---
 
 <style type="text/css">
@@ -16,31 +14,39 @@ card_image_margin: 10
 	can be moved to .scss at some point 
 	*/
 
-	#lightgallery-wrap {
-
+	.table {
+    display: table;
+  }
+	.row {
+    display: table-row;
 	}
-	#lightgallery {
-	}
-	#lightgallery-end {
-		clear: both;
-	}
+	.cell {
+    display: table-cell;
+    text-align: center;
+  }
 
-	.lg-img-a {
-		// placeholder, for future possible use
-	}
 
-	.lg-img {
-		// prevent spaces between the images
-		display: block;
-		float: left;
+	li.gallery-img {
+    padding: 0px;
+    margin: 0px;
+  }
+	img.gallery-img {
 
-		border: 0.4em solid black;
-
-		// override setting from styles_feeling_responsive.css
+		/* override setting from styles_feeling_responsive.css */
 		border-radius: initial;
 		-moz-border-radius: initial;
 		-webkit-border-radius: initial;
+
+
+    /* width: 100% of container box; stretch to fill */
+    width: 100%;
+    /* height auto allows image to keep aspect ratios as it resizes */
+    height: auto;
+
+		border: 3px solid black;
 	}
+
+
 
 </style>
 
@@ -52,20 +58,23 @@ card_image_margin: 10
 {% for static_file in site.static_files %}
   {% if static_file.path contains folder %}
   	{% if static_file.basename contains "post-thumb" %}
-		{% else %}
-	  	{% if static_file.basename contains "-thumb" %}
- 		 		{% if static_file.path contains "extra-ignore" %}
-				{% else %}
-
- 				 	{% if static_file.extname == ".png" or static_file.extname == ".jpg" or static_file.extname == ".gif" %}
-
-						{% assign thumb_url = static_file.path | remove_first: "/images/" %}
-						{% assign image_caption = static_file.basename | remove_first: "-thumb"%}
-	
-						{% assign gallery_images = gallery_images | push: thumb_url %}
-						{% assign gallery_captions = gallery_captions | push: image_caption %}
-
-	 	 			{% endif %}
+    {% else %}
+  	  {% if static_file.basename contains "thumb-sm" %}
+		  {% else %}
+  	  	{% if static_file.basename contains "-thumb" %}
+  		 		{% if static_file.path contains "extra-ignore" %}
+  				{% else %}
+  
+  				 	{% if static_file.extname == ".png" or static_file.extname == ".jpg" or static_file.extname == ".gif" %}
+  
+  						{% assign thumb_url = static_file.path | remove_first: "/images/" %}
+  						{% assign image_caption = static_file.basename | remove_first: "-thumb"%}
+  	
+  						{% assign gallery_images = gallery_images | push: thumb_url %}
+  						{% assign gallery_captions = gallery_captions | push: image_caption %}
+  
+  	 	 			{% endif %}
+  	 			{% endif %}
  	 			{% endif %}
  	 		{% endif %}
   	{% endif %}
@@ -80,21 +89,29 @@ card_image_margin: 10
 		{% if page.teaser %}<p class="teaser">{{ page.teaser }}</p>{% endif %}
 
 
-		<div id="lightgallery-wrap">
-		<div id="lightgallery">
+    <div class="table">
+    <div class="row">
+    <div class="cell">
+
+
+		<ul class="small-block-grid-3 medium-block-grid-5 large-block-grid-7">
 
 			{% assign array_last_index = gallery_images | size | minus: 1 %}
 
 			{% for index in ( 0..array_last_index ) %}
 
 				{% capture thumb_url %}{{ gallery_images[ index ] }}{% endcapture %}
+
 				{% assign split_url = thumb_url | split: '-thumb' %}
 				{% capture image_url %}{{split_url[0]}}{{split_url[1]}}{% endcapture %}
 	
 				{% assign image_caption = gallery_captions[ index ] %}
 
-			    <a href="{{ site.urlimg }}{{ image_url }}"
-							class="lg-img-a"
+          <li class="gallery-img"><a 
+              data-fancybox="gallery"
+              data-caption="{{ image_caption }}"
+              href="{{ site.urlimg }}{{ image_url }}"
+							class="gallery-img"
 							title="{{ image_caption }}"
 						><img 
 							{% if include.show_caption %}
@@ -103,33 +120,24 @@ card_image_margin: 10
 							src="{{ site.urlimg }}{{ thumb_url }}" 
 							alt="{{ image_caption }}"
 							title="{{ image_caption }}"
-							class="lg-img"
-						><img 
-						></a>
+							class="gallery-img"
+						></a></li>
 	
 			{% endfor %}
 
-			<div id="lightgallery-end"></div>
+		</ul>
+
+
+
 		</div>
 		</div>
+		</div>
+
 
 	</div><!-- /.small-12.columns -->
 </div><!-- /.row -->
 
 
-<script type="text/javascript">
-
-	console.log("init lightgallery");
-	lightGallery(
-		document.getElementById('lightgallery'), 
-		{
-/*
-			thumbnail:true
-*/
-		}
-	);
-
-</script>
 
 
 <!-- vim: ts=2
