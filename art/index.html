@@ -54,7 +54,9 @@ permalink: "art/"
 {% assign gallery_images = "" | split: "," %}
 {% assign gallery_captions = "" | split: "," %}
 
-{% for static_file in site.static_files %}
+{% assign reverse_files = site.static_files | reverse %}
+
+{% for static_file in reverse_files %}
   {% if static_file.path contains folder %}
   	{% if static_file.basename contains "post-thumb" %}
     {% else %}
