@@ -11,13 +11,14 @@
 title: 'Andrew Proper'
 
 # The slogan describes your website and is used on homepage in <title> and other important places
-slogan: 'Portfolio'
+slogan: ''
 
 # The description is used on homepage and in the footer to quickly describe your website. Use a maximum of 150 characters for SEO-purposes.
-description: 'This is the portfolio of Andrew Proper, showing software and art creations.'
+description: ''
 
 # The credits show up in the includes/_footer.html – It would be nice of you to leave a link to Phlow or Feeling Responsive as a thank you :)
-credits: '<p>Created with &hearts; by Andrew Proper with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> based on <a href="http://phlow.github.io/feeling-responsive/">Feeling Responsive</a>.</p>'
+credits: ''
+#credits: '<p>Created with &hearts; by Andrew Proper with <a href="http://jekyllrb.com/" target="_blank">Jekyll</a> based on <a href="http://phlow.github.io/feeling-responsive/">Feeling Responsive</a>.</p>'
 
 # Main author of the website
 # See > authors.yml
@@ -221,7 +222,7 @@ msapplication_tilecolor:                '#fabb00'
 # used in _includes/comments
 
 #-#disqus_shortname: feelingresponsive
-disqus_shortname: andrewproperportfolio
+#disqus_shortname: andrewproperportfolio
 
 
 #      _____
