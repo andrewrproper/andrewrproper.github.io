@@ -1,6 +1,11 @@
 
 const path 	= require( "path" );
+
 var webpack = require( "webpack" );
+
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const dev_mode = process.env.NODE_ENV !== 'production'
+
 
 
 module.exports = {
@@ -19,10 +24,28 @@ module.exports = {
 			jQuery: 'jquery',
 			'window.$': 'jquery',
 			'window.jQuery': 'jquery'   // for fancybox
-		} )
+		} ),
+		new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename:      dev_mode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: dev_mode ? '[id].css'   : '[id].[hash].css',
+		})
 	],
   module: {
     rules: [
+			{
+				test: /\.scss$/,
+				use: [
+					// style-loader: creates style nodes from JS strings
+					//  - fallback to style-loader in development. 
+					//  - use extract plugin to write to a dedicated file, for production.
+					dev_mode ? 'style-loader' : MiniCssExtractPlugin.loader,
+
+					"css-loader", // translates CSS into CommonJS
+					"sass-loader" // compiles Sass to CSS, using Node Sass by default
+				]
+			},
       {
         test: /\.css$/,
         use: [

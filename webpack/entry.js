@@ -11,6 +11,10 @@ require( "jquery" ); // dependency of: fancybox
 require( "@fancyapps/fancybox" );
 require( "@fancyapps/fancybox/dist/jquery.fancybox.css" );
 
+/*
+require( "./portfolio-art.scss" );
+*/
+
 
 var fancybox_options = {
 
