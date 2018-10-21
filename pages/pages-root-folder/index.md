@@ -11,17 +11,17 @@ widget1:
   title: "Software"
   url: 'software/'
   image: software/widget-logo-302x182.jpg
-  text: 'A collection of my software projects.'
+  text: ''
 widget2:
   title: "Art"
   url: 'art/'
   image: art/widget-logo-302x182.jpg
-  text: 'A collection of my artworks.'
+  text: ''
 widget3:
-  title: "About"
-  url: 'about/'
+  title: "Contact"
+  url: 'contact/'
 #  image: widget-1-302x182.jpg
-  text: 'About Me'
+  text: ''
 
 #
 # Use the call for action to show a button on the frontpage
