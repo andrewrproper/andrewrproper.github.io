@@ -1,12 +1,23 @@
 ---
 layout: page
 title: "Contact"
-meta_title: "Contact and use our contact form"
-subheadline: "Wufoo-powered contact forms"
-teaser: "Get in touch with me? Use the contact form."
+meta_title: "Contact me via this contact form"
+subheadline: ""
+teaser: "Send me a note, to get in touch with me"
 permalink: "/contact/"
 ---
-If you need a fabulous contact form for your website, I suggest you use [Wufoo][1]. You can use three forms for free, you get no spam and if you get more than 100 entries you have to pay.
+
+<!-- BEGIN - embed google form -->
+
+<iframe
+src="https://docs.google.com/forms/d/e/1FAIpQLSeMHt82bvrERUWNbau92PZcXdc9rwgK19mvEFUjxtWNq_zr6g/viewform?embedded=true"
+width="380" 
+height="1200" 
+frameborder="0" 
+marginheight="0"
+marginwidth="0"
+>Loading...</iframe>
+
+<!-- END - embed google form -->
 
 
- [1]: http://www.wufoo.com/
