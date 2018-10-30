@@ -11,12 +11,14 @@ header:
 widget1:
   title: "Software"
   url: '/software/'
-  image: software/widget-logo-302x182.jpg
+  #image: software/widget-logo-302x182.jpg
+  image: software/2018-06--code+art--302x182.jpg
   text: ''
 widget2:
   title: "Art"
   url: '/art/'
-  image: art/widget-logo-302x182.jpg
+  #image: art/widget-logo-302x182.jpg
+  image: art/2018-06--art--diving-flame-expanded--302x182.jpg
   text: ''
 widget3:
   title: "Contact"
