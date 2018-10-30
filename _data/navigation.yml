@@ -10,10 +10,10 @@
   url: "/art/"
   side: left
 
-- title: "Search"
-  url: "/search/"
-  side: right
-
 - title: "Contact"
   url: "/contact/"
+  side: left
+
+- title: "Search"
+  url: "/search/"
   side: right

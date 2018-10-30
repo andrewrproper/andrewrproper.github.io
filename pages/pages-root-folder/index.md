@@ -9,17 +9,17 @@ header:
   image_fullwidth: 2018-06--main-splash--1600.jpg
 widget1:
   title: "Software"
-  url: 'software/'
+  url: '/software/'
   image: software/widget-logo-302x182.jpg
   text: ''
 widget2:
   title: "Art"
-  url: 'art/'
+  url: '/art/'
   image: art/widget-logo-302x182.jpg
   text: ''
 widget3:
   title: "Contact"
-  url: 'contact/'
+  url: '/contact/'
   image: contact/2018-10-contact-widget--302x182.jpg
   text: ''
 
