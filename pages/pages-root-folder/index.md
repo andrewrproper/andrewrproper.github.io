@@ -20,7 +20,7 @@ widget2:
 widget3:
   title: "Contact"
   url: 'contact/'
-#  image: widget-1-302x182.jpg
+  image: contact/2018-10-contact-widget--302x182.jpg
   text: ''
 
 #

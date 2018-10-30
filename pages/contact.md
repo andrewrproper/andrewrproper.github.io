@@ -1,10 +1,12 @@
 ---
 layout: page
+header:
+  image_fullwidth: contact/2018-10-contact-splash--1600x503.jpg
 title: "Contact"
-meta_title: "Contact me via this contact form"
+meta_title: "Send me a note, to get in touch with me"
 subheadline: ""
 teaser: "Send me a note, to get in touch with me"
-permalink: "/contact/"
+permalink: "contact/"
 ---
 
 <style type="text/css">
