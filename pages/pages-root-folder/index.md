@@ -6,7 +6,8 @@
 #
 layout: frontpage
 header:
-  image_fullwidth: 2018-06--main-splash--1600.jpg
+  #image_fullwidth: 2018-06--main-splash--1600.jpg
+  image_fullwidth: sky-header-02--20170803_124017.jpg
 widget1:
   title: "Software"
   url: '/software/'
