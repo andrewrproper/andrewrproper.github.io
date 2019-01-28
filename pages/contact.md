@@ -6,6 +6,7 @@ title: "Contact"
 meta_title: "Send me a note, to get in touch with me:"
 subheadline: ""
 teaser: "Send me a note, to get in touch with me:"
+breadcrumb: true
 permalink: "contact/"
 ---
 
