@@ -13,6 +13,7 @@ tags:
 excerpt_separator: <!-- more -->
 header:
   image_fullwidth: software/2018-06--software--1600.jpg
+breadcrumb: true
 #
 # Styling
 #
