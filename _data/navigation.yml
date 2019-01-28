@@ -17,3 +17,10 @@
 - title: "Search"
   url: "/search/"
   side: right
+
+- title: "Blog"
+  url: "/blog/"
+  side: right
+  dropdown:
+  - title: "Blog Archive"
+    url: "/blog/archive/"

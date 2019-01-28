@@ -11,6 +11,8 @@ categories:
 tags:
   - new software
 excerpt_separator: <!-- more -->
+header:
+  image_fullwidth: software/2018-06--software--1600.jpg
 #
 # Styling
 #
