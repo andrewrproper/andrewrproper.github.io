@@ -46,6 +46,10 @@ permalink: "art/"
 	}
 
 
+  #images-wrapper {
+    padding: 0.5em;
+  }
+
 
 </style>
 
@@ -98,6 +102,7 @@ permalink: "art/"
     </p>
 
 
+    <div id="images-wrapper">
     <div class="table">
     <div class="row">
     <div class="cell">
@@ -138,9 +143,10 @@ permalink: "art/"
 
 
 
-		</div>
-		</div>
-		</div>
+		</div><!-- /.cell -->
+		</div><!-- /.row -->
+		</div><!-- /.table -->
+    </div><!-- /#images-wrapper -->
 
 
 	</div><!-- /.small-12.columns -->
