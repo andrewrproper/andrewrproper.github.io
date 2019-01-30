@@ -6,13 +6,17 @@ header:
   image_fullwidth: software/2018-06--software--1600.jpg
 breadcrumb: true
 permalink: "software/"
+
+# Only use this <h1> if using the default layout. It is not needed for page
+# layout:
+#
+#		<h1>{{ page.title }}</h1>
+#		{% if page.teaser %}<p class="teaser">{{ page.teaser }}</p>{% endif %}
 ---
 
 
 <div class="row">
 	<div class="small-12 columns t30">
-		<h1>{{ page.title }}</h1>
-		{% if page.teaser %}<p class="teaser">{{ page.teaser }}</p>{% endif %}
 
 			{% assign counter = 1 %}
 
