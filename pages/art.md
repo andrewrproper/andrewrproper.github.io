@@ -50,6 +50,7 @@ permalink: "art/"
 </style>
 
 
+
 {% assign folder = "/art/" %}
 {% assign gallery_images = "" | split: "," %}
 {% assign gallery_captions = "" | split: "," %}
@@ -88,6 +89,13 @@ permalink: "art/"
 	<div class="small-12 columns t30">
 		<h1>{{ page.title }}</h1>
 		{% if page.teaser %}<p class="teaser">{{ page.teaser }}</p>{% endif %}
+
+		<p>
+    I enjoy creating art with a variety of approaches, including the use of 
+    <a href="https://www.gimp.org/">GIMP</a>,
+    <a href="https://krita.org/en/">Krita</a>,
+    and other software.
+    </p>
 
 
     <div class="table">
@@ -140,6 +148,8 @@ permalink: "art/"
 
 
 
+[gimp]: https://www.gimp.org/
+[krita]: https://krita.org/en/
 
 <!-- vim: ts=2
 -->
