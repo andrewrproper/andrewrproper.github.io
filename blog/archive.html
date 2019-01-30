@@ -1,16 +1,20 @@
 ---
-layout: default
+layout: page
 title: "Blog Archive"
 teaser: "Click on a headline to read the teaser."
 breadcrumb: true
 header:
   image_fullwidth: sky-header-02--20170803_124017.jpg
 permalink: "blog/archive/"
+
+# this HTML is already provided by the page layout. It is only needed when using
+# default layout.
+#
+#		<h1>{{ page.title }}</h1>
+#		{% if page.teaser %}<p class="teaser">{{ page.teaser }}</p>{% endif %}
 ---
 <div id="blog-index" class="row">
 	<div class="small-12 columns t30">
-		<h1>{{ page.title }}</h1>
-		{% if page.teaser %}<p class="teaser">{{ page.teaser }}</p>{% endif %}
 
 		<dl class="accordion" data-accordion>
 			{% assign counter = 1 %}
