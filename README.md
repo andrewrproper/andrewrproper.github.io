@@ -2,6 +2,20 @@
 # Portfolio - README
 
 
+## Regenerating Thumbnails
+
+```
+perl gen-img-thumbs.pl
+```
+
+This is used to regenerate thumbnails for images.
+The settings, including which paths to process, are in 
+
+```
+gen-img-thumbs-config.yaml
+```
+
+
 ## Running Webpack
 
 ```
@@ -19,5 +33,4 @@ npx webpack --watch
 ```
 bundle exec jekyll serve
 ```
-
 
