@@ -9,4 +9,3 @@ extra-gitignore/
 .jekyll-metadata
 public
 node_modules
-assets/js/webpack/
