@@ -7,9 +7,11 @@ subheadline: ""
 title: "SplatterBoardManip"
 teaser: "A painting and image manipulation program created using C++, OpenGL, and QT3."
 categories:
-  - software
+   - Software
 tags:
-  - Graphics
+   - Graphics
+   - Art 
+   - GUI
 excerpt_separator: <!-- more -->
 header:
   image_fullwidth: software/2018-06--software--1600.jpg
@@ -22,7 +24,7 @@ breadcrumb: true
 #  thumb: ""
 #  homepage: ""
 #  caption: ""
-#  url: "https://github.com/andrewrproper/SplatterBoardManip"
+#  url: ""
 ---
 
 

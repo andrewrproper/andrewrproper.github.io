@@ -20,7 +20,7 @@ permalink: "software/"
 
 			{% assign counter = 1 %}
 
-			{% assign show_posts = site.posts | where_exp: "item", "item.categories contains 'software'" %}
+			{% assign show_posts = site.posts | where_exp: "item", "item.categories contains 'Software'" %}
 			{% for post in show_posts %}
 
         <h2><a href="{{ site.url }}{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></h2>
