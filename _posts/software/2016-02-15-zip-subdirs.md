@@ -5,7 +5,7 @@ layout: page
 #
 subheadline: ""
 title: "Zip Subdirs"
-teaser: "Timestamped Archives of Subdirectories"
+teaser: "Timestamped Archives of Subdirectories."
 categories:
    - Software
 tags:
