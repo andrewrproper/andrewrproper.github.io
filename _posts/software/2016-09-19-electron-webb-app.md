@@ -5,7 +5,7 @@ layout: page
 #
 subheadline: ""
 title: "Electron Web App"
-teaser: "Run a website on your desktop in its own window"
+teaser: "Run a website on your desktop in its own window."
 categories:
    - Software
 tags:
