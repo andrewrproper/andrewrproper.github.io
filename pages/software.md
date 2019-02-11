@@ -60,9 +60,7 @@ permalink: "software/"
 
           </small>
 
-          {% if post.excerpt %}{{ post.excerpt }}{% endif %}
-
-          <a 
+          {% if post.excerpt %}{{ post.excerpt }}{% endif %} <br/> <a 
             href="{{ site.url }}{{ site.baseurl }}{{ post.url }}" 
             title="{{ site.data.language.read }} {{ post.title | escape_once }}"
             ><strong>{{ site.data.language.read_more }}</strong></a>
