@@ -18,14 +18,32 @@
 
 {% assign title = title | strip_html | escape | strip_newlines %}
 
-{% endcapture %}<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% endcapture %}
+
+{% if site.google_analytics_tracking_id %}
+
+<!-- updated google analytics code: 2019-03-10 -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id={{ site.google_analytics_tracking_id }}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', '{{ site.google_analytics_tracking_id }}');
+</script>
+
+{% endif %}
+
+	<meta charset="utf-8"/>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>{{ title }}</title>
 
-    <link rel="stylesheet" type="text/css" href="{{ url }}/assets/css/styles_feeling_responsive.css">
+    <link rel="stylesheet" type="text/css" href="{{ url }}/assets/css/styles_feeling_responsive.css"/>
 
   {% if site.asciidoctor-enabled == true %}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css"/>
   {% endif %}
 
 	<script type="text/javascript" src="{{ url }}/webpack-bundle/bundle.js" charset="utf-8"></script>
