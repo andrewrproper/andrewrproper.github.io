@@ -25,7 +25,7 @@
 
 body.video,
 body.video #masthead-no-image-header { background: #000; }
-body.video #masthead-no-image-header { margin-bottom: 60px; }
+//body.video #masthead-no-image-header { margin-bottom: 60px; }
 body.video h1,
 body.video h2,
 body.video h3,
@@ -69,10 +69,10 @@ body.video cite { color: #fff; }
 ------------------------------------------------------------------- */
 
 #masthead {
-    background-color: $primary-color;
+    //background-color: $primary-color;
 }
 #masthead-no-image-header {
-    background-color: $primary-color;
+    //background-color: $primary-color;
 }
 #masthead-with-text {
     text-align: center;
@@ -83,10 +83,10 @@ body.video cite { color: #fff; }
     text-shadow: 0 2px 3px rgba(0,0,0,.4);
 }
 #masthead-no-image-header {
-    height: 175px;
+    //height: 175px;
 }
 #masthead-no-image-header #logo img {
-    margin-top: 60px;
+    //margin-top: 60px;
 }
 
 /* Masthead › small-only
@@ -97,7 +97,7 @@ body.video cite { color: #fff; }
         display: none;
     }
     #masthead {
-        height: 200px;
+        //height: 200px;
     }
     #masthead-with-pattern {
         padding: 15px 0;
@@ -121,10 +121,10 @@ body.video cite { color: #fff; }
 
 @media #{$medium-only} {
     #logo img {
-        margin-top: 60px;
+        //margin-top: 60px;
     }
     #masthead {
-        height: 280px;
+        //height: 280px;
     }
     #masthead-with-pattern {
         padding: 20px 0;
@@ -144,10 +144,10 @@ body.video cite { color: #fff; }
 
 @media #{$large-only} {
     #logo img {
-        margin-top: 80px;
+        //margin-top: 80px;
     }
     #masthead {
-        height: 310px;
+        //height: 310px;
     }
     #masthead-with-pattern {
         padding: 30px 0;
@@ -167,10 +167,10 @@ body.video cite { color: #fff; }
 
 @media #{$xlarge-up} {
     #logo img {
-        margin-top: 110px;
+        //margin-top: 110px;
     }
     #masthead {
-        height: 380px;
+        //height: 380px;
     }
     #masthead-with-pattern {
         padding: 45px 0;
@@ -362,3 +362,25 @@ body.video cite { color: #fff; }
 .pr5  { padding-right: 5px !important; }
 .pr10 { padding-right: 10px !important; }
 .pr20 { padding-right: 20px !important; }
+
+
+
+/* update header display */
+
+
+#masthead {
+    //border: 2px solid red;
+}
+#masthead #logo img {
+    //margin-top: 1em;
+    //border: 2px dotted green;
+}
+
+#header-bar {
+    height: 6em;
+    padding-top: 1em;
+    width: 100vw;
+    background-size: 100vw;
+    background-position: center; 
+    background-color: $primary-color;
+}
