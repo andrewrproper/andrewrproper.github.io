@@ -13,14 +13,14 @@ urlimg: 	'http://localhost:4000/images/'
 gist:
   noscript: false
 
-sass:
+#sass:
   # http://sass-lang.com/documentation/file.SASS_REFERENCE.html#output_style
-  style: :expanded
-  line_numbers: true
+  #style: :expanded
+  #line_numbers: true
   # trace_selectors: true
   # debug_info: true
   # FUTURE https://github.com/jekyll/jekyll-sass-converter/issues/12
-  sourcemap: true
+  #sourcemap: true
 
 # Disable when not in production
-google_analytics_tracking_id: false
+#google_analytics_tracking_id: false

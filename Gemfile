@@ -10,4 +10,5 @@ end
 
 gem 'asciidoctor', '~> 1.5.4'
 gem 'coderay', '1.1.1'
+gem 'bundler', '~> 2.5.15'
 
