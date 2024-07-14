@@ -23,16 +23,15 @@
   "homepage": "https://gitlab.com/endosynth/portfolio#README",
   "devDependencies": {
     "@fancyapps/fancybox": "^3.5.1",
-    "css-loader": "^0.28.11",
+    "css-loader": "^7.1.2",
     "file-loader": "^1.1.11",
     "lightgallery.js": "^1.0.3",
-    "mini-css-extract-plugin": "^0.4.3",
-    "node-sass": "^4.9.3",
+    "mini-css-extract-plugin": "^2.9.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.21.0",
     "url-loader": "^1.0.1",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.0.8"
+    "webpack": "^5.93.0",
+    "webpack-cli": "^4.10.0"
   },
   "dependencies": {
     "lg-autoplay": "^1.0.4",
@@ -48,6 +47,7 @@
     "lg-zoom": "^1.1.0",
     "lg-zoom.js": "^1.0.1",
     "lightgallery": "^1.6.11",
+    "node-sass": "^9.0.0",
     "npm-install-missing": "^0.1.4",
     "photoswipe": "^4.1.2"
   }
